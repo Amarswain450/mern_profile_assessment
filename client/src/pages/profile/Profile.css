@@ -1,0 +1,25 @@
+.profile_main_div {
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.profile_wrapper_div {
+    width: 48%;
+}
+
+.profileCardDiv {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) and (min-width: 300px) {
+    .profile_main_div {
+        padding: 50px;
+    }
+
+    .profile_wrapper_div {
+        width: 100%;
+    }
+}
