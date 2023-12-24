@@ -60,7 +60,6 @@ export const createProfileAction = (createData) => {
                 type: CREATE_PROFILE_SUCCESS,
                 payload: response.data.message
             });
-            dispatch(getProfileAction());
         } catch (error) {
             dispatch({
                 type: CREATE_PROFILE_FAILED,
@@ -136,7 +135,6 @@ export const updateProfileAction = (id, editData) => {
                 type: UPDATE_PROFILE_SUCCESS,
                 payload: response.data.message
             });
-            dispatch(getSectorsAction());
         } catch (error) {
             dispatch({
                 type: UPDATE_PROFILE_FAILED,

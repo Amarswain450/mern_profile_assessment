@@ -79,14 +79,14 @@ const CreateForm = () => {
         });
     };
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
 
         //validate the form
         if (!validateForm(createFormValue, setErrorMessages)) {
             return;
         }
-        dispatch(createProfileAction(createFormValue));
+        await dispatch(createProfileAction(createFormValue));
         navigate(routerConfigurations.profile);
     }
 
