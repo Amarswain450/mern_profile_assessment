@@ -12,7 +12,7 @@ connect();
 
 //config cors
 const corsOptions = {
-    origin: 'https://mern-profile-assessment-frontend.vercel.app/',
+    origin: ["https://mern-profile-assessment-frontend.vercel.app"],
     optionsSuccessStatus: 200,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
