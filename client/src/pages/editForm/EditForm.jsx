@@ -93,14 +93,14 @@ const EditForm = () => {
         });
     };
 
-    const updateHandler = (e) => {
+    const updateHandler = async (e) => {
         e.preventDefault();
 
         //validate the form
         if (!validateForm(editFormValue, setErrorMessages)) {
             return;
         }
-        dispatch(updateProfileAction(id, editFormValue));
+        await dispatch(updateProfileAction(id, editFormValue));
         navigate(routerConfigurations.profile);
     }
 
