@@ -47,6 +47,7 @@ export const createProfileAction = (createData) => {
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
+                    withCredentials: true,
                 },
             }
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/create-user`, createData, config);
@@ -74,7 +75,9 @@ export const getProfileAction = () => {
     return async (dispatch) => {
         dispatch({ type: GET_PROFILE_REQUEST });
         try {
-            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`, { 
+                withCredentials: true, 
+            });
             dispatch({
                 type: GET_PROFILE_SUCCESS,
                 payload: data.users
@@ -94,7 +97,9 @@ export const getSingleProfileAction = (id) => {
     return async (dispatch) => {
         dispatch({ type: GET_SINGLE_PROFILE_REQUEST });
         try {
-            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${id}`);
+            const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${id}`, {
+                withCredentials: true,
+            });
             dispatch({
                 type: GET_SINGLE_PROFILE_SUCCESS,
                 payload: data.user
@@ -117,6 +122,7 @@ export const updateProfileAction = (id, editData) => {
             const config = {
                 headers: {
                     'Content-Type': 'application/json',
+                    withCredentials: true,
                 },
             }
             const response = await axios.put(`${process.env.REACT_APP_API_URL}/api/edit-user/${id}`, editData, config);
