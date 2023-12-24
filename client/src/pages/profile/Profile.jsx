@@ -21,15 +21,15 @@ const Profile = () => {
 
   const { loading, profiles } = useSelector((state) => state.getProfile);
 
-
   const nameCapitalize = (str) => {
-    const newTitle = str.split(" ");
-    const updatedTitle = [];
-    for (let st in newTitle) {
-      updatedTitle[st] = newTitle[st][0]?.toUpperCase() + newTitle[st]?.slice(1)?.toLowerCase();
-    }
+    const truncatedStr = str.slice(0, 20);
+    const displayStr = truncatedStr.length < str.length ? truncatedStr + "..." : truncatedStr;
+    const newTitle = displayStr.split(" ");
+    const updatedTitle = newTitle.map(word =>
+      word[0]?.toUpperCase() + word.slice(1)?.toLowerCase()
+    );
     return updatedTitle.join(" ");
-  }
+  };
 
   const editProfileHandler = (id) => {
     navigate(`${routerConfigurations.edit}/${id}`)
@@ -49,13 +49,13 @@ const Profile = () => {
                 <div className='profile_wrapper_div' key={data?._id}>
                   <Card className='profileCardDiv' variant="outlined">
                     <CardContent>
-                      <Box sx={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+                      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                         <Box>
                           <Typography sx={{ fontSize: 18, fontWeight: "bold" }} color="text.secondary" gutterBottom>
                             {nameCapitalize(data?.username)}
                           </Typography>
                         </Box>
-                        <Box sx={{cursor: "pointer"}} onClick={() => editProfileHandler(data?._id)}>
+                        <Box sx={{ cursor: "pointer" }} onClick={() => editProfileHandler(data?._id)}>
                           <EditIcon />
                         </Box>
                       </Box>
